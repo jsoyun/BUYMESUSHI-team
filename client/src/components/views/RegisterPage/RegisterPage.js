@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { registerUser } from "../../../actions/user_actions";
+import { Controller, useForm } from "react-hook-form";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -39,7 +40,9 @@ const theme = createTheme();
 const RegisterPage = (props) => {
     const dispatch = useDispatch();
 
-    
+    // const { handleSubmit, watch, reset, control } = useForm();
+    // console.log(watch("email"));
+
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
@@ -77,7 +80,7 @@ const RegisterPage = (props) => {
             password: Password,
             name: Name,
             nickname: Nickname,
-            address: Address
+            address: Address,
         };
 
         dispatch(registerUser(body)).then((response) => {
@@ -109,11 +112,8 @@ const RegisterPage = (props) => {
                             alignItems: "center",
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                            <LockOutlinedIcon />
-                        </Avatar>
                         <Typography component="h1" variant="h5">
-                            Sign up
+                            회원가입
                         </Typography>
                         <Box
                             component="form"
@@ -122,7 +122,7 @@ const RegisterPage = (props) => {
                             sx={{ mt: 3 }}
                         >
                             <Grid container spacing={1}>
-                                <Grid item xs={12} >
+                                <Grid item xs={12}>
                                     <TextField
                                         value={Email}
                                         onChange={onEmailHandler}
@@ -161,9 +161,9 @@ const RegisterPage = (props) => {
                                         autoComplete="new-password"
                                     />
                                 </Grid>
-                                <Grid item xs={12} >
+                                <Grid item xs={12}>
                                     <TextField
-                                        value={Name} 
+                                        value={Name}
                                         onChange={onNameHandler}
                                         required
                                         fullWidth
@@ -197,7 +197,7 @@ const RegisterPage = (props) => {
                                         autoComplete="address"
                                     />
                                 </Grid>
-                                
+
                                 <Grid item xs={12}>
                                     <FormControlLabel
                                         control={
