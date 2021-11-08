@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
+import React, { useState } from 'react';
+import Button from '@mui/material/Button';
 
-import { withRouter } from "react-router";
-import { useSelector } from "react-redux";
+import { withRouter } from 'react-router';
+import { useSelector } from 'react-redux';
 
 const RightMenu = (props) => {
     const user = useSelector((state) => state.user);
-    console.log(user.userData);
 
     return (
         <div>

@@ -3,10 +3,6 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
 const LandingPage = (props) => {
-    useEffect(() => {
-        axios.get('/api/hello').then((response) => console.log(response.data));
-    }, []);
-
     const onClickHandler = () => {
         axios.get('/api/users/logout').then((response) => {
             if (response.data.success) {
