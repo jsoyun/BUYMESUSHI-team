@@ -29,6 +29,7 @@
         "sass-loader": "^12.3.0",
         "styled-components": "^5.3.3",
         "web-vitals": "^1.0.1",
+        "webpack": "4.44.2",
         "yup": "^0.32.11"
     },
     "scripts": {
