@@ -145,6 +145,7 @@ app.post('/api/users/register', (req, res) => {
     // });
 
     //여기
+<<<<<<< HEAD
     // user.save((err, userInfo) => {
     //     if (err) {
     //         let errors = getErrors(err);
@@ -159,8 +160,23 @@ app.post('/api/users/register', (req, res) => {
     // });
     user.save((err, userInfo) => {
         if (err) return res.json({ success: false });
+=======
+    user.save(async (err, userInfo) => {
+        if (err) {
+            let errors = getErrors(err);
+            //Send Errors to browser
+            console.log(errors);
+
+            return res.json({ success: false });
+        }
+
+>>>>>>> main
         return res.status(200).json({ success: true });
     });
+    // user.save((err, userInfo) => {
+    //     if (err) return res.json({ success: false });
+    //     return res.status(200).json({ success: true });
+    // });
 });
 
 app.post('/api/users/login', (req, res) => {

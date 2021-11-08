@@ -66,7 +66,6 @@ const LoginPage = (props) => {
             if (response.payload.loginSuccess) {
                 props.history.push('/');
             } else {
-                console.log(body.email);
                 alert('Error');
             }
         });
