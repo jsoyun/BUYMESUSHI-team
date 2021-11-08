@@ -145,22 +145,21 @@ app.post('/api/users/register', (req, res) => {
     // });
 
     //여기
-    // user.save((err, userInfo) => {
-    //     if (err) {
-    //         let errors = getErrors(err);
-    //         //Send Errors to browser
-    //         console.log(errors);
+    user.save(async (err, userInfo) => {
+        if (err) {
+            let errors = getErrors(err);
+            //Send Errors to browser
+            console.log(errors);
 
-    //         return res.json({ success: false });
-    //     }
+            return res.json({ success: false });
+        }
 
-    //     //if (err) return ;
-    //     return res.status(200).json({ success: true });
-    // });
-    user.save((err, userInfo) => {
-        if (err) return res.json({ success: false });
         return res.status(200).json({ success: true });
     });
+    // user.save((err, userInfo) => {
+    //     if (err) return res.json({ success: false });
+    //     return res.status(200).json({ success: true });
+    // });
 });
 
 app.post('/api/users/login', (req, res) => {
