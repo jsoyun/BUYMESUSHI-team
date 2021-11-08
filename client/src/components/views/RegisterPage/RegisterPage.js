@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { registerUser } from "../../../actions/user_actions";
-import { Controller, useForm } from "react-hook-form";
+// import { Controller, useForm } from "react-hook-form";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -40,8 +40,7 @@ const theme = createTheme();
 const RegisterPage = (props) => {
     const dispatch = useDispatch();
 
-    // const { handleSubmit, watch, reset, control } = useForm();
-    // console.log(watch("email"));
+
 
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
