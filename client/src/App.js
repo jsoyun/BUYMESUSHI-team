@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+//import NavBar from "./components/views/NavBar/NavBar";
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
-import Footer from "./components/views/Footer/Footer";
 import SignUp from "./components/views/RegisterPage/Register";
 import About from "./components/views/AboutPage/About";
 import UsEarth from "./components/views/UsEarthPage/UsEarth";
@@ -42,7 +42,6 @@ function App() {
                     <Route exact path="/signup" component={SignUp} />
                 </Switch>
             </div>
-            <Footer />
         </Router>
     );
 }
