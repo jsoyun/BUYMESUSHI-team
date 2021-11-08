@@ -3,10 +3,12 @@ import { useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { registerUser } from "../../../actions/user_actions";
 import { Controller, useForm } from "react-hook-form";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
+
+import TextField from '@material-ui/core/TextField';
+// "@mui/material/TextField";
+
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
@@ -17,32 +19,11 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-function Copyright(props) {
-    return (
-        <Typography
-            variant="body2"
-            color="text.secondary"
-            align="center"
-            {...props}
-        >
-            {"Copyright © "}
-            <Link color="inherit" href="https://mui.com/">
-                UsEarth
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-        </Typography>
-    );
-}
-
 const theme = createTheme();
 
 const RegisterPage = (props) => {
     const dispatch = useDispatch();
-
-    // const { handleSubmit, watch, reset, control } = useForm();
-    // console.log(watch("email"));
-
+    // useState 사용
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
@@ -50,6 +31,7 @@ const RegisterPage = (props) => {
     const [Nickname, setNickname] = useState("");
     const [Address, setAddress] = useState("");
 
+    // 이벤트 핸들러
     const onEmailHandler = (event) => {
         setEmail(event.currentTarget.value);
     };
@@ -85,12 +67,43 @@ const RegisterPage = (props) => {
 
         dispatch(registerUser(body)).then((response) => {
             if (response.payload.success) {
+                // ▼ react 내 페이지 이동 코드
                 props.history.push("/login");
             } else {
                 alert("Failed to sign up");
             }
         });
     };
+
+
+    // ▼ 유효성 검사 나열
+    // email validation (같은 이메일로 또 가입할수 없고(중복X), 한글은 못 쓰는 등 이메일의 기본 양식을 지켜야 함)
+    const emailvalidation = () => {
+        const emailRegex =
+            /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}/;
+        if (Email === "") return true;
+        return emailRegex.test(Email);
+    };
+    // password validation
+    const passwordvalidation = () => {
+        let check = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+        if (Password === "") return true;
+        return check.test(Password);
+    };
+    // name validation
+    const namevalidation = () => {
+        let check = /^[가-힣]{2,7}$/;
+        if (Name === "") return true;
+        return check.test(Name);
+    };
+    // nickname validation
+    const nicknamevalidation = () => {
+        let check = /[~!@#$%^&*()_+|<>?:{}.,/;='"ㄱ-ㅎ | ㅏ-ㅣ |가-힣]/;
+        if (Nickname === "") return false;
+        return check.test(Nickname);
+    };
+
+    // 리턴값
     return (
         <div
             style={{
@@ -126,13 +139,16 @@ const RegisterPage = (props) => {
                                     <TextField
                                         value={Email}
                                         onChange={onEmailHandler}
+                                        type="text"
+                                        variant="standard"
                                         required
                                         fullWidth
                                         id="email"
                                         label="Email Address"
                                         name="email"
-                                        autoComplete="email"
                                         autoFocus
+                                        error={!emailvalidation()}
+                                        helperText={emailvalidation() ? "" : "이메일 양식에 맞게 작성해 주세요."}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -146,6 +162,8 @@ const RegisterPage = (props) => {
                                         type="password"
                                         id="password"
                                         autoComplete="new-password"
+                                        error={!passwordvalidation()}
+                                        helperText={passwordvalidation() ? "" : "특수문자를 포함한 8 ~ 16자를 입력하세요"}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -159,6 +177,8 @@ const RegisterPage = (props) => {
                                         type="password"
                                         id="password"
                                         autoComplete="new-password"
+                                        error={Password !== ConfirmPassword}
+                                        helperText={Password !== ConfirmPassword ? "위 비밀번호와 일치하지 않습니다." : ""}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -170,7 +190,9 @@ const RegisterPage = (props) => {
                                         id="Name"
                                         label="Name"
                                         name="Name"
-                                        autoComplete="name"
+                                        autoComplete="Name"
+                                        error={!namevalidation()}
+                                        helperText={namevalidation() ? "" : "성과 이름을 포함해 2 ~ 7자 ex)홍길동"}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -183,6 +205,8 @@ const RegisterPage = (props) => {
                                         label="Nickname"
                                         name="nickname"
                                         autoComplete="nickname"
+                                        error={nicknamevalidation()}
+                                        helperText={nicknamevalidation() ? "영어와 숫자로만 입력해주세요." : ""}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -197,6 +221,7 @@ const RegisterPage = (props) => {
                                         autoComplete="address"
                                     />
                                 </Grid>
+
 
                                 <Grid item xs={12}>
                                     <FormControlLabel
@@ -230,35 +255,26 @@ const RegisterPage = (props) => {
                     <Copyright sx={{ mt: 5 }} />
                 </Container>
             </ThemeProvider>
-            {/* <form
-                style={{ display: "flex", flexDirection: "column" }}
-                onSubmit={onSubmitHandler}
-            >
-                <label>Email</label>
-                <input type="email" value={Email} onChange={onEmailHandler} />
-
-                <label>Name</label>
-                <input type="text" value={Name} onChange={onNameHandler} />
-
-                <label>Password</label>
-                <input
-                    type="password"
-                    value={Password}
-                    onChange={onPasswordHandler}
-                />
-
-                <label>Confirm Password</label>
-                <input
-                    type="password"
-                    value={ConfirmPassword}
-                    onChange={onConfirmPasswordHandler}
-                />
-                <br />
-
-                <button type="submit">회원가입</button>
-            </form> */}
         </div>
     );
 };
+
+function Copyright(props) {
+    return (
+        <Typography
+            variant="body2"
+            color="text.secondary"
+            align="center"
+            {...props}
+        >
+            {"Copyright © "}
+            <Link color="inherit" href="https://mui.com/">
+                UsEarth
+            </Link>{" "}
+            {new Date().getFullYear()}
+            {"."}
+        </Typography>
+    );
+}
 
 export default withRouter(RegisterPage);
