@@ -7,10 +7,6 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import TextField from '@material-ui/core/TextField';
-<<<<<<< HEAD
-// "@mui/material/TextField";
-=======
->>>>>>> main
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -100,13 +96,8 @@ const RegisterPage = (props) => {
     };
     // nickname validation
     const nicknamevalidation = () => {
-<<<<<<< HEAD
-        let check = /[~!@#$%^&*()_+|<>?:{}.,/;='"ㄱ-ㅎ | ㅏ-ㅣ |가-힣]/;
-        if (Nickname === '') return false;
-=======
         let check = /[a-zA-Z0-9]/;
         if (Nickname === '') return true;
->>>>>>> main
         return check.test(Nickname);
     };
 
@@ -192,10 +183,7 @@ const RegisterPage = (props) => {
                                         type="password"
                                         id="password"
                                         autoComplete="new-password"
-<<<<<<< HEAD
-=======
                                         // password 재확인용 오류메시지
->>>>>>> main
                                         error={Password !== ConfirmPassword}
                                         helperText={
                                             Password !== ConfirmPassword
@@ -232,19 +220,11 @@ const RegisterPage = (props) => {
                                         label="Nickname"
                                         name="nickname"
                                         autoComplete="nickname"
-<<<<<<< HEAD
-                                        error={nicknamevalidation()}
-                                        helperText={
-                                            nicknamevalidation()
-                                                ? '영어와 숫자로만 입력해주세요.'
-                                                : ''
-=======
                                         error={!nicknamevalidation()}
                                         helperText={
                                             nicknamevalidation()
                                                 ? ''
                                                 : '영어와 숫자로만 입력해주세요.'
->>>>>>> main
                                         }
                                     />
                                 </Grid>

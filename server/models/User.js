@@ -13,11 +13,7 @@ const userSchema = mongoose.Schema({
             validator: function (v) {
                 return new Promise(function (resolve, reject) {
                     resolve(
-<<<<<<< HEAD
-                        /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{1,3}$/i.test(
-=======
                         /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}/.test(
->>>>>>> main
                             v
                         )
                     );
@@ -26,25 +22,9 @@ const userSchema = mongoose.Schema({
             message: (props) => `${props.value} is not a valid email format!`,
         },
     },
-
     password: {
         type: String,
         required: [true, 'password required'],
-<<<<<<< HEAD
-        validate: {
-            validator: function (v) {
-                return new Promise(function (resolve, reject) {
-                    resolve(
-                        /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/.test(
-                            v
-                        )
-                    );
-                });
-            },
-            message: (props) =>
-                `${props.value} is not a valid password format!`,
-        },
-=======
         minlength: 8,
     },
     name: {
@@ -59,29 +39,10 @@ const userSchema = mongoose.Schema({
             message: (props) => `${props.value} is not a valid name format!`,
         },
         minlength: 2,
->>>>>>> main
     },
-
-    name: {
-        type: String,
-        required: [true, 'name required'],
-        validate: {
-            validator: function (v) {
-                return new Promise(function (resolve, reject) {
-                    resolve(/^[가-힣]{2,7}$/i.test(v));
-                });
-            },
-            message: (props) => `${props.value} is not a valid name format!`,
-        },
-        minlength: 2,
-    },
-
     nickname: {
         type: String,
         required: [true, 'nickname required'],
-<<<<<<< HEAD
-        maxlength: [20, 'maximum nickname lengths are 20'],
-=======
         validate: {
             validator: function (v) {
                 return new Promise(function (resolve, reject) {
@@ -90,7 +51,6 @@ const userSchema = mongoose.Schema({
             },
             message: (props) => `${props.value} is not a valid name format!`,
         },
->>>>>>> main
     },
     address: {
         type: String,
