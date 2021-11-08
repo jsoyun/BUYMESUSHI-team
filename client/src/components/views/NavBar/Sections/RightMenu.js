@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 
 const RightMenu = (props) => {
     const user = useSelector((state) => state.user);
+    console.log(user.userData);
 
     const onClickHandler = () => {
         axios.get('/api/users/logout').then((response) => {
