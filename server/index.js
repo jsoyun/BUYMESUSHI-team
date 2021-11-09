@@ -10,32 +10,22 @@ const cookieParser = require("cookie-parser");
 
 const userRouter = require("./routes/users");
 const authBoardRouter = require("./routes/authBoard");
+const productRoutes = require("./routes/productRoutes");
+const connectDB = require("./config/db");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const config = require("./config/key");
 const { auth } = require("./middleware/auth");
 
-mongoose
-    .connect(config.mongoURI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        // useCreateIndex: true,
-        // useFindAndModify: false,
-    })
-    .then(() => {
-        console.log("MongoDB Connected..");
-    })
-    .catch((err) => console.log(err));
+connectDB();
 
 app.get("/api/shop", (req, res) => {
     //쇼핑페이지로 넘어가는거 해야함..
     res.json("shopppp");
 });
 
-const productRoutes = require("./routes/productRoutes");
 app.post("/api/shop", (req, res) => {
     Product.updateOne({
         name: "어어어",
