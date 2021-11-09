@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 const bcrypt = require("bcrypt");
 const saltRounds = 12;
 const jwt = require("jsonwebtoken");
@@ -12,16 +13,51 @@ const userSchema = mongoose.Schema({
         type: String,
         trim: true,
         unique: 1,
+        required: [true, "email required"],
+        validate: {
+            validator: function (v) {
+                return new Promise(function (resolve, reject) {
+                    resolve(
+                        /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}/.test(
+                            v
+                        )
+                    );
+                });
+            },
+            message: (props) => `${props.value} is not a valid email format!`,
+        },
     },
     password: {
         type: String,
-        minlength: 5,
+        required: [true, "password required"],
+        minlength: 8,
+    },
+    name: {
+        type: String,
+        required: [true, "name required"],
+        validate: {
+            validator: function (v) {
+                return new Promise(function (resolve, reject) {
+                    resolve(/^[가-힣]{2,7}$/i.test(v));
+                });
+            },
+            message: (props) => `${props.value} is not a valid name format!`,
+        },
+        minlength: 2,
     },
     nickname: {
         type: String,
-        maxlength: 50,
+        required: [true, "nickname required"],
+        validate: {
+            validator: function (v) {
+                return new Promise(function (resolve, reject) {
+                    resolve(/[a-zA-Z0-9]/.test(v));
+                });
+            },
+            message: (props) => `${props.value} is not a valid name format!`,
+        },
     },
-    address:{
+    address: {
         type: String,
     },
     role: {
@@ -35,6 +71,11 @@ const userSchema = mongoose.Schema({
     tokenExp: {
         type: Number,
     },
+    pic: {
+        type: String,
+    },
+    followers: [{ type: ObjectId, ref: "User" }],
+    following: [{ type: ObjectId, ref: "User" }],
 });
 
 userSchema.pre("save", function (next) {

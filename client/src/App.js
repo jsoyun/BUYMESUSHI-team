@@ -8,13 +8,14 @@ import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
 import SignUp from "./components/views/RegisterPage/Register";
 import About from "./components/views/AboutPage/About";
-import UsEarth from "./components/views/UsEarthPage/UsEarth";
+
 //page
 
 import HomeScreen from "./components/views/ShoppingPage/HomeScreen";
 import MyPage from "./components/views/ShoppingPage/MyPage";
 import ProductScreen from "./components/views/ShoppingPage/ProductScreen";
 //쇼핑목록 안 components
+import AuthBoard from "./components/views/AuthBoard/AuthBoard";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
           <Route exact path="/about" component={Auth(About, null)} />
 
           {/* usEarth 페이지 추후 null -> true로 변경 */}
-          <Route exact path="/usEarth" component={Auth(UsEarth, null)} />
+          <Route exact path="/authboard" component={Auth(AuthBoard, null)} />
           {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
           <Route exact path="/product" component={Auth(HomeScreen, null)} />
           <Route
