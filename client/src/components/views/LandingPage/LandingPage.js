@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import SliderPage from '../SliderPage/SliderPage';
+import ApiPage from '../ApiPage/ApiPage';
 
 const LandingPage = (props) => {
     useEffect(() => {
         axios.get('/api/hello').then((response) => console.log(response.data));
     }, []);
-    // paging은 App.js에 라우팅한걸로 됐음.
-    // main 첫페이지는 헤더와 두개의 컴포넌트로 구성(LandingPage(사진 뜨는), SliderPage(아래 네브바처럼))
+    // paging은 App.js에서 라우팅하는 방식으로 해결.
+    // main 첫페이지는 헤더와 두개의 컴포넌트로 구성(SliderPage(사진 뜨는), ApiPage(아래 네브바처럼))
     // main 두번째 페이지도 헤더와 두개의 컴포넌트로 구성(추후 회의)
     // axios로 api 불러와놓고
 
@@ -35,6 +37,9 @@ const LandingPage = (props) => {
             }}
         >
             <h1>시작 페이지</h1>
+            <SliderPage />
+            <br />
+            <ApiPage />
         </div>
     );
 };
