@@ -1,19 +1,23 @@
 // require("dotenv").config();
 
-const { products } = require("../data/products");
+const productsData = require("../data/products");
+const connectDB = require("../config/db");
 const Product = require("../models/Product");
 
+connectDB();
+
 const importDate = async () => {
-    try {
-        await Product.deleteMany();
-        await Product.insertMany(products);
+  console.log("여기까지 오지도 않지?");
+  try {
+    await Product.deleteMany({});
 
-        console.log("Data Import Success");
-        process.exit();
-    } catch (error) {
-        console.error(error);
-        process.exit(1);
-    }
+    await Product.insertMany(productsData);
+
+    console.log("Data Import Success");
+    process.exit();
+  } catch (error) {
+    console.error("Error with data import");
+    process.exit(1);
+  }
 };
-
-module.exports = importDate;
+importDate();
