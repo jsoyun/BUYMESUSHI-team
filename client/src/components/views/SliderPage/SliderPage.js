@@ -11,7 +11,7 @@ import {
 } from "@material-ui/icons";
 import styled from "styled-components";
 import { sliderItems } from "../../../data";
-import Axios from "axios";
+// import Axios from "axios";
 
 const Container = styled.div`
   width: 100%;
@@ -41,7 +41,7 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 80%;
   display: flex;
   transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
@@ -49,7 +49,7 @@ const Wrapper = styled.div`
 
 const Slide = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 75vh;
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
@@ -61,13 +61,13 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-  height: 75%;
+  height: 100%;
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 30px;
-  margin-bottom: 200px;
+  margin-bottom: 75px;
 `;
 
 const Title = styled.h1`
@@ -88,17 +88,22 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const NewsItem = styled.div``;
+// const NewsItem = styled.div``;
 
 const SliderPage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [articles, setArticles] = useState([]);
+  // const [articles, setArticles] = useState([]);
 
-  useEffect(() => {
-    const getArticles = async () => {
-      const res = await Axios.get("");
-    };
-  });
+  // useEffect(() => {
+  //   const getArticles = async () => {
+  //     const res = await Axios.get(
+  //       "GET https://newsapi.org/v2/top-headlines?country=us&apiKey=55ee2d88a6d74797b9d1dead15f2b8d5"
+  //     );
+  //     setArticles(res.data.articles)
+  //     console.log(res);
+  //   };
+  //   getArticles();
+  // });
 
   const handleClick = (direction) => {
     if (direction === "left") {
@@ -131,7 +136,7 @@ const SliderPage = () => {
           <ArrowForwardIosRounded />
         </Arrow>
       </Container>
-      <NewsItem></NewsItem>
+      {/* <NewsItem></NewsItem> */}
     </>
   );
 };

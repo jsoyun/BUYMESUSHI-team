@@ -3,6 +3,7 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import SliderPage from "../SliderPage/SliderPage";
 import ApiPage from "../ApiPage/ApiPage";
+import NewsApi from "../SliderPage/NewsApi";
 
 const LandingPage = (props) => {
   useEffect(() => {
@@ -38,10 +39,8 @@ const LandingPage = (props) => {
             </div>
             <br /> */}
       <SliderPage />
-      <br />
-      <br />
-      <br />
       <ApiPage />
+      <NewsApi />
     </>
   );
 };
