@@ -6,6 +6,11 @@ const LandingPage = (props) => {
     useEffect(() => {
         axios.get('/api/hello').then((response) => console.log(response.data));
     }, []);
+    // paging은 App.js에 라우팅한걸로 됐음.
+    // main 첫페이지는 헤더와 두개의 컴포넌트로 구성(LandingPage(사진 뜨는), SliderPage(아래 네브바처럼))
+    // main 두번째 페이지도 헤더와 두개의 컴포넌트로 구성(추후 회의)
+    // axios로 api 불러와놓고
+
 
     const onClickHandler = () => {
         axios.get('/api/users/logout').then((response) => {
@@ -16,6 +21,9 @@ const LandingPage = (props) => {
             }
         });
     };
+
+
+
     return (
         <div
             style={{
