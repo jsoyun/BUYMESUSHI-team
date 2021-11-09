@@ -1,14 +1,10 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 const bcrypt = require("bcrypt");
-const saltRounds = 12;
+const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 
 const userSchema = mongoose.Schema({
-    name: {
-        type: String,
-        maxlength: 50,
-    },
     email: {
         type: String,
         trim: true,
