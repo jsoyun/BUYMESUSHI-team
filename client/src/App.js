@@ -13,39 +13,33 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function App() {
-    return (
-        <Router>
-            <NavBar />
-            <div>
-                <Switch>
-                    <Route exact path="/" component={Auth(LandingPage, null)} />
-                    <Route
-                        exact
-                        path="/login"
-                        component={Auth(LoginPage, false)}
-                    />
-                    <Route
-                        exact
-                        path="/register"
-                        component={Auth(RegisterPage, false)}
-                    />
-                    <Route exact path="/about" component={Auth(About, null)} />
+  return (
+    <div style={{}}>
+      <Router>
+        <NavBar />
+        <div>
+          <Switch>
+            <Route exact path="/" component={Auth(LandingPage, null)} />
+            <Route exact path="/login" component={Auth(LoginPage, false)} />
+            <Route
+              exact
+              path="/register"
+              component={Auth(RegisterPage, false)}
+            />
+            <Route exact path="/about" component={Auth(About, null)} />
 
-                    {/* usEarth 페이지 추후 null -> true로 변경 */}
-                    <Route
-                        exact
-                        path="/authboard"
-                        component={Auth(AuthBoard, null)}
-                    />
-                    <Route exact path="/shop" component={Auth(About, null)} />
-                    <Route exact path="/board" component={Auth(About, null)} />
+            {/* usEarth 페이지 추후 null -> true로 변경 */}
+            <Route exact path="/authboard" component={Auth(AuthBoard, null)} />
+            <Route exact path="/shop" component={Auth(About, null)} />
+            <Route exact path="/board" component={Auth(About, null)} />
 
-                    {/* 추후 삭제 */}
-                    <Route exact path="/signup" component={SignUp} />
-                </Switch>
-            </div>
-        </Router>
-    );
+            {/* 추후 삭제 */}
+            <Route exact path="/signup" component={SignUp} />
+          </Switch>
+        </div>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

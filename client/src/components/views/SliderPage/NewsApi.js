@@ -1,6 +1,6 @@
 // 메인 스크롤하면 2번째로 나오는 페이지
 // NewsApi
-import NewItem from "./NewsItem";
+import NewsItem from "./NewsItem";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
@@ -17,11 +17,17 @@ const NewsApi = () => {
     };
     getArticles();
   });
+
   return (
     <div>
-      {/* {articles.map(({ title, description, url, urlToImage }) => (
-        // <NewsItem title={title} description={description} url={url} />
-      ))} */}
+      {articles.map(({ title, description, url, urlToImage }) => (
+        <NewsItem
+          title={title}
+          description={description}
+          url={url}
+          urlToImage={urlToImage}
+        />
+      ))}
     </div>
   );
 };

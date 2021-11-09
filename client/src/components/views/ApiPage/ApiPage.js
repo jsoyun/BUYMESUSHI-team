@@ -13,11 +13,10 @@ export default class ApiPage extends Component {
         console.log(
           `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
         );
-      }
+      },
     };
     return (
       <div>
-        <h2>환경 변화 지표</h2>
         <Slider {...settings}>
           <div>
             <h3>1</h3>
