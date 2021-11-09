@@ -20,6 +20,26 @@ const ProductScreen = () => {
       <div className="productscreen_right">
         <div className></div>
       </div>
+      <div className="right_info">
+        <p>
+          price:<span>$499.99</span>
+        </p>
+        <p>
+          Status:<span>In stock</span>
+        </p>
+        <p>
+          Qty
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </p>
+        <p>
+          <button type="button">Add to cart</button>
+        </p>
+      </div>
     </div>
   );
 };
