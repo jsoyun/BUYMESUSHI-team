@@ -9,6 +9,8 @@ import NavBar from "./components/views/NavBar/NavBar";
 import SignUp from "./components/views/RegisterPage/Register";
 import About from "./components/views/AboutPage/About";
 import AuthBoard from "./components/views/AuthBoard/AuthBoard";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
     return (
