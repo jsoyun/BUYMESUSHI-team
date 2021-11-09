@@ -1,61 +1,8 @@
 const express = require("express");
 const { User } = require("../models/User");
 const { auth } = require("../middleware/auth");
-const bcrypt = require("bcrypt");
-const saltRounds = 12;
+
 const router = express.Router();
-
-const faker = require("faker");
-const MongoClient = require("mongodb").MongoClient;
-
-async function seedDB() {
-    // Connection URL
-    const uri =
-        "mongodb+srv://chs:chlgustjr1!@boilerplate.z1w0n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
-    const client = new MongoClient(uri, {
-        useNewUrlParser: true,
-        // useUnifiedTopology: true,
-    });
-
-    try {
-        await client.connect();
-        console.log("Connected correctly to server on users");
-
-        const collection = client.db("myFirstDatabase").collection("users");
-
-        // The drop() command destroys all data from a collection.
-        // Make sure you run it against proper database and collection.
-        collection.drop();
-
-        // make a bunch of time series data
-        const bcryptFakePassword = bcrypt.hash("c123123!", 12);
-
-        for (let i = 0; i < 100; i++) {
-            const fakeEmail = faker.internet.email();
-            const fakePassword = bcryptFakePassword;
-            const fakeName = faker.name.findName();
-        }
-
-        let authBoardSeedData = [
-            {
-                body: "randomCard",
-                photo: "../../client/public/img/authBoard/abc.jpg",
-                createdAt: Date.now(),
-            },
-            { body: "234", photo: "345" },
-            { body: "345", photo: "456" },
-        ];
-
-        collection.insertMany(authBoardSeedData);
-
-        console.log("Database seeded! :)");
-    } catch (err) {
-        console.log(err.stack);
-    }
-}
-
-seedDB();
 
 function getErrors(error) {
     let errorArray = [];

@@ -28,4 +28,4 @@ const authBoardschema = new mongoose.Schema({
 
 const AuthBoard = mongoose.model("AuthBoard", authBoardschema);
 
-module.exports = { AuthBoard };
+module.exports = AuthBoard;

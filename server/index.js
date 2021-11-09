@@ -18,8 +18,18 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const { auth } = require("./middleware/auth");
+const importDate = require("./routes/seederScript");
 
-connectDB();
+const connectAndImport = async () => {
+    try {
+        await connectDB();
+        await importDate();
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+connectAndImport();
 
 app.get("/api/shop", (req, res) => {
     //쇼핑페이지로 넘어가는거 해야함..

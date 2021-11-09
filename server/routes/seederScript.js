@@ -1,23 +1,27 @@
-// require("dotenv").config();
-
-const productsData = require("../data/products");
-const connectDB = require("../config/db");
+const bcrypt = require("bcrypt");
+const saltRounds = 12;
 const Product = require("../models/Product");
-
-connectDB();
+const User = require("../models/User");
+const AuthBoard = require("../models/AuthBoard");
+const { products } = require("../data/products");
+const { users } = require("../data/users");
+const { authBoards } = require("../data/authBoards");
 
 const importDate = async () => {
-  console.log("여기까지 오지도 않지?");
-  try {
-    await Product.deleteMany({});
+    try {
+        // await Product.deleteMany();
+        await Product.collection.drop();
+        await Product.insertMany(products);
+        await User.deleteMany();
+        await User.insertMany(users);
 
-    await Product.insertMany(productsData);
+        await AuthBoard.deleteMany();
+        await AuthBoard.insertMany(authBoards);
 
-    console.log("Data Import Success");
-    process.exit();
-  } catch (error) {
-    console.error("Error with data import");
-    process.exit(1);
-  }
+        console.log("Data Import Success");
+    } catch (error) {
+        console.error(error);
+    }
 };
-importDate();
+
+module.exports = importDate;
