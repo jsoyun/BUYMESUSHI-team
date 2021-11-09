@@ -4,7 +4,7 @@
 // cf) api 보여주는 컴포넌트 안에도 컴포넌트를 넣을 예정.
 // 사진도 넣고 설명도 넣고
 //(데이터 파일을 하나 만들어서 데이터 정보 때려박아넣고 불러오는걸로..styled component로 div 커스텀하기)
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   ArrowBackIosRounded,
   ArrowForwardIosRounded,
@@ -15,7 +15,7 @@ import { sliderItems } from "../../../data";
 
 const Container = styled.div`
   width: 100%;
-  height: 75vh;
+  height: vh;
   display: flex;
   position: relative;
   overflow: hidden;

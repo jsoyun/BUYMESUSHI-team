@@ -1,0 +1,23 @@
+.news-container {
+  display: flex;
+  background-color: black;
+}
+
+.news-item {
+  width: 350px;
+  padding: 12px;
+  border: 1px solid;
+  margin-bottom: 20px;
+}
+
+.news-image {
+  width: 350px;
+}
+
+a {
+  color: white;
+}
+
+p {
+  color: white;
+}
