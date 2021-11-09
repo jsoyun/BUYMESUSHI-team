@@ -8,7 +8,7 @@ import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
 import SignUp from "./components/views/RegisterPage/Register";
 import About from "./components/views/AboutPage/About";
-import UsEarth from "./components/views/UsEarthPage/UsEarth";
+import AuthBoard from "./components/views/AuthBoard/AuthBoard";
 
 function App() {
     return (
@@ -32,8 +32,8 @@ function App() {
                     {/* usEarth 페이지 추후 null -> true로 변경 */}
                     <Route
                         exact
-                        path="/usEarth"
-                        component={Auth(UsEarth, null)}
+                        path="/authboard"
+                        component={Auth(AuthBoard, null)}
                     />
                     <Route exact path="/shop" component={Auth(About, null)} />
                     <Route exact path="/board" component={Auth(About, null)} />

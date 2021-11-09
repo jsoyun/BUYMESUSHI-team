@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Button from '@mui/material/Button';
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
 
-import { withRouter } from 'react-router';
-import { useSelector } from 'react-redux';
+import { withRouter } from "react-router";
+import { useSelector } from "react-redux";
 
 const RightMenu = (props) => {
     const user = useSelector((state) => state.user);
@@ -12,7 +12,7 @@ const RightMenu = (props) => {
             <Button sx={{ mr: 1 }} href="/about" color="inherit">
                 소개
             </Button>
-            <Button sx={{ mr: 1 }} href="/usEarth" color="inherit">
+            <Button sx={{ mr: 1 }} href="/authboard" color="inherit">
                 지키미인증
             </Button>
             <Button sx={{ mr: 1 }} href="/shop" color="inherit">
