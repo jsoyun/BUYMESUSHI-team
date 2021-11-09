@@ -27,20 +27,25 @@ const LandingPage = (props) => {
 
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                height: '100vh',
-            }}
-        >
-            <h1>시작 페이지</h1>
+        <>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '20vh',
+                }}
+            >
+                <h1>시작 페이지</h1>
+            </div>
+            <br />
             <SliderPage />
             <br />
+            <br />
+            <br />
             <ApiPage />
-        </div>
+        </>
     );
 };
 
