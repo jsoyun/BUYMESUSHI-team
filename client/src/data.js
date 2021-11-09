@@ -11,13 +11,13 @@ export const sliderItems = [
     img: "/img/main/main3.jpg",
     title: "안전한 최첨단 블록체인 플랫폼",
     desc: "블록체인 기술 기반으로 거래소 및 카드시스템을 통해 현금처럼 사용",
-    bg: "f5fafd",
+    bg: "4c4c4c",
   },
   {
     id: 3,
     img: "/img/main/main5.jpg",
     title: "안전한 거래/최소의 수수료/빠른 이체 시간",
     desc: "국제 친환경 에너지시장과 탄소배출권의 가치를 교환하는 가교역활",
-    bg: "fbf0f4",
+    bg: "587F51",
   },
 ];

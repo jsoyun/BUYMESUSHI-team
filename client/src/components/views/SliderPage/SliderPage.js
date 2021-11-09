@@ -4,13 +4,14 @@
 // cf) api 보여주는 컴포넌트 안에도 컴포넌트를 넣을 예정.
 // 사진도 넣고 설명도 넣고
 //(데이터 파일을 하나 만들어서 데이터 정보 때려박아넣고 불러오는걸로..styled component로 div 커스텀하기)
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ArrowBackIosRounded,
   ArrowForwardIosRounded,
 } from "@material-ui/icons";
 import styled from "styled-components";
 import { sliderItems } from "../../../data";
+import Axios from "axios";
 
 const Container = styled.div`
   width: 100%;
@@ -60,12 +61,13 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-  height: 80%;
+  height: 75%;
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 30px;
+  margin-bottom: 200px;
 `;
 
 const Title = styled.h1`
@@ -74,7 +76,7 @@ const Title = styled.h1`
 
 const Desc = styled.p`
   margin: 50px 0px;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 500;
   letter-spacing: 3px;
 `;
@@ -86,8 +88,18 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const NewsItem = styled.div``;
+
 const SliderPage = () => {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const getArticles = async () => {
+      const res = await Axios.get("");
+    };
+  });
+
   const handleClick = (direction) => {
     if (direction === "left") {
       setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
@@ -96,28 +108,31 @@ const SliderPage = () => {
     }
   };
   return (
-    <Container>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
-        <ArrowBackIosRounded />
-      </Arrow>
-      <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
-          <Slide bg={item.bg} key={item.id}>
-            <ImgContainer>
-              <Image src={item.img} />
-            </ImgContainer>
-            <InfoContainer>
-              <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
-              <Button>더보기</Button>
-            </InfoContainer>
-          </Slide>
-        ))}
-      </Wrapper>
-      <Arrow direction="right" onClick={() => handleClick("right")}>
-        <ArrowForwardIosRounded />
-      </Arrow>
-    </Container>
+    <>
+      <Container>
+        <Arrow direction="left" onClick={() => handleClick("left")}>
+          <ArrowBackIosRounded />
+        </Arrow>
+        <Wrapper slideIndex={slideIndex}>
+          {sliderItems.map((item) => (
+            <Slide bg={item.bg} key={item.id}>
+              <ImgContainer>
+                <Image src={item.img} />
+              </ImgContainer>
+              <InfoContainer>
+                <Title>{item.title}</Title>
+                <Desc>{item.desc}</Desc>
+                <Button>더보기</Button>
+              </InfoContainer>
+            </Slide>
+          ))}
+        </Wrapper>
+        <Arrow direction="right" onClick={() => handleClick("right")}>
+          <ArrowForwardIosRounded />
+        </Arrow>
+      </Container>
+      <NewsItem></NewsItem>
+    </>
   );
 };
 
