@@ -65,11 +65,11 @@ const Image = styled.img`
 
 const InfoContainer = styled.div`
   flex: 1;
-  padding: 50px;
+  padding: 30px;
 `;
 
 const Title = styled.h1`
-  font-size: 70px;
+  font-size: 50px;
 `;
 
 const Desc = styled.p`

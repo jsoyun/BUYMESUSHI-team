@@ -41,15 +41,7 @@ const LandingPage = (props) => {
       <br />
       <br />
       <br />
-      <ApiPage
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "20vh",
-        }}
-      />
+      <ApiPage />
     </>
   );
 };
