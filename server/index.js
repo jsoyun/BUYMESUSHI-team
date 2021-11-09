@@ -22,11 +22,13 @@ mongoose
         // useCreateIndex: true,
         // useFindAndModify: false,
     })
-    .then(() => console.log("MongoDB Connected.."))
+    .then(() => {
+        console.log("MongoDB Connected..");
+    })
     .catch((err) => console.log(err));
 
-app.use("/api/authboard", authBoardRouter);
 app.use("/api/users", userRouter);
+app.use("/api/authboard", authBoardRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at ${port}`);
