@@ -35,10 +35,12 @@ async function seedDB() {
         collection.drop();
 
         // make a bunch of time series data
+
+        var randomCard = faker.helpers.createCard();
         let authBoardSeedData = [
             {
-                body: "안녕하세요~",
-                photo: "../../client/public/img/",
+                body: randomCard,
+                photo: "../../client/public/img/authBoard/abc.jpg",
                 createdAt: Date.now(),
             },
             { body: "234", photo: "345" },
