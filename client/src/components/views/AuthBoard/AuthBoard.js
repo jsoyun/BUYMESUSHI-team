@@ -10,7 +10,7 @@ const AuthBoard = (props) => {
     const [Body, setBody] = useState('');
     const [Like, setLike] = useState(null);
     const [Comment, setComment] = useState('');
-    const [Photo, setPicture] = useState('');
+    const [Photo, setPhoto] = useState('');
 
     useEffect(() => {
         axios
@@ -25,7 +25,7 @@ const AuthBoard = (props) => {
         setBody(event.currentTarget.value);
     };
     const onPhotoHandler = (event) => {
-        setPicture(event.currentTarget.value);
+        setPhoto(event.currentTarget.value);
     };
 
     const setBodyClear = () => {
@@ -34,13 +34,19 @@ const AuthBoard = (props) => {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
+        // var newPath = Photo.replace('C:\\fakepath\\', '');
+        // console.log(newPath);
 
+        let form = document.getElementById('authBoardPhoto');
+        let formData = new FormData(form);
         let body = {
             body: Body,
             photo: Photo,
         };
 
+        //        console.log(Photo);
         dispatch(postAuthBoard(body)).then((response) => {
+            //console.log(response);
             if (response.payload.postAuthBoard) {
                 if (response.payload.postAuthBoard) {
                     props.history.push('/authboard');
@@ -58,16 +64,19 @@ const AuthBoard = (props) => {
     return (
         <div>
             지키미인증 페이지asdf
-            <form onSubmit={onSubmitHandler} encType="multipart/form-data">
+            <form
+                onSubmit={onSubmitHandler}
+                encType="multipart/form-data"
+                id="authBoardPhoto"
+            >
                 본문 : <input value={Body} onChange={onBodyHandler} />
-                파일 업로드 :{' '}
+                파일 업로드 :
                 <input
                     type="file"
-                    name="authBoardPicture"
+                    name="authBoardPhoto"
                     value={Photo}
                     onChange={onPhotoHandler}
                 />
-                {console.log(Photo)}
                 <button type="submit">제출 </button>
             </form>
         </div>
