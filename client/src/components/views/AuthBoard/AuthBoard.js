@@ -1,14 +1,34 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const AuthBoard = () => {
+    const dispatch = useDispatch();
+
+    const [Body, setBody] = useState('');
+    const [Like, setLike] = useState();
+    const [Comment, setComment] = useState('');
+
     useEffect(() => {
         axios
-            .get("/api/authboard")
-            .then((response) => console.log(response.data))
+            .get('/api/authboard')
+            .then((response) => {
+                console.log(response.data);
+            })
             .catch((err) => console.error(err));
     }, []);
-    return <div>지키미asdasd인증 페이지 </div>;
+
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+
+        let body = {
+            body: Body,
+        };
+
+        //dispatch(postAuthBoard(body).then((response) => {}));
+    };
+
+    return <div>지키미인증 페이지asdf </div>;
 };
 
 export default AuthBoard;

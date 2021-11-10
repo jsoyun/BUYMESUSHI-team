@@ -5,14 +5,24 @@ const User = require('../models/User');
 const { auth } = require('../middleware/auth');
 const router = express.Router();
 
-router.get('/', auth, (req, res) => {
-    AuthBoard.find()
-        .then()
-        .catch((err) => console.error(err));
-    res.send('hi1');
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.find({});
+        const authBoards = await AuthBoard.find({});
+
+        res.json({ users, authBoards });
+    } catch (error) {
+        console.log(error);
+    }
+});
+router.post('/posts', async (req, rers) => {
+    try {
+    } catch (error) {
+        console.log(error);
+    }
 });
 
-router.get('/:id', auth, (req, res) => {
+router.get('/:id', (req, res) => {
     res.send('hi2');
 });
 
