@@ -1,11 +1,9 @@
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
-const Product = require("../models/Product");
-const User = require("../models/User");
-const AuthBoard = require("../models/AuthBoard");
-const { products } = require("../data/products");
-const { users } = require("../data/users");
-const { authBoards } = require("../data/authBoards");
+const Product = require('../models/Product');
+const User = require('../models/User');
+const AuthBoard = require('../models/AuthBoard');
+const { products } = require('../data/products');
+const { users } = require('../data/users');
+//const { authBoards } = require('../data/authBoards');
 
 const importDate = async () => {
     try {
@@ -14,11 +12,23 @@ const importDate = async () => {
         await Product.insertMany(products);
         await User.deleteMany();
         await User.insertMany(users);
-
+        const a = await User.find({});
+        const b = a[1]._id;
+        // console.log(b);
+        const authBoards = [
+            {
+                body: '최씨가 올림',
+                photo: '/img/authBoard/abc.jpg',
+                likes: [b],
+                comments: [{ text: 'asdf' }, b],
+            },
+        ];
         await AuthBoard.deleteMany();
         await AuthBoard.insertMany(authBoards);
+        const c = await AuthBoard.findOne({});
+        // console.log(c);
 
-        console.log("Data Import Success");
+        console.log('Data Import Success');
     } catch (error) {
         console.error(error);
     }
