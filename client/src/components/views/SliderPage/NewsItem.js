@@ -4,21 +4,22 @@ import styled from "styled-components";
 
 const NewsContainer = styled.div`
   width: 100%;
-  /* flex-grow: row;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    position: absolute; */
+  display: flex;
+  flex-grow: row;
+  flex-wrap: nowrap;
+  float: left;
 `;
 
 const Item = styled.div`
-  display: flex;
   position: relative;
+  flex-grow: row;
+  flex-wrap: nowrap;
+  float: left;
   justify-content: space-evenly;
   width: 350px;
   height: 420px;
   border: 2px solid red;
   background-color: black;
-  float: left;
 `;
 
 const NewsImg = styled.img`
@@ -27,14 +28,15 @@ const NewsImg = styled.img`
   position: absolute;
 `;
 
-const Headline = styled.div`
+const Headline = styled.a`
   width: 330px;
   height: 50px;
   position: absolute;
-  margin-top: 200px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-top: 215px;
+  margin-left: 12px;
+  margin-right: 12px;
   color: white;
+  font-size: 18px;
 `;
 
 const Desc = styled.div`
@@ -42,9 +44,10 @@ const Desc = styled.div`
   /* width: 330px;
     height: 30px; */
   color: white;
-  margin-top: 280px;
+  margin-top: 295px;
   margin-left: 10px;
   margin-right: 10px;
+  font-size: 14px;
 `;
 
 const NewsItem = ({ title, description, url, urlToImage }) => {
@@ -52,9 +55,7 @@ const NewsItem = ({ title, description, url, urlToImage }) => {
     <NewsContainer>
       <Item>
         <NewsImg src={urlToImage} alt="NewImage" />
-        <Headline>
-          <a href={url}>{title}</a>
-        </Headline>
+        <Headline href={url}>{title}</Headline>
         <Desc>{description}</Desc>
       </Item>
     </NewsContainer>
