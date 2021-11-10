@@ -53,36 +53,62 @@ function ApiPage({ sliders }) {
   /* overflow-x: hidden; */
 }
 `;
+
+  // 열린 모달은 모달바깥쪽을 클릭하거나 닫기버튼을 클릭하거나 ESC키를 클릭해서 닫는다.
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
-    <div>
+    <div style={{ padding: "25px" }}>
       <h2>시간의 흐름에 따른 환경 지표의 변화</h2>
       <StyledSlider {...settings}>
         <div>
-          <button onClick={() => setModalIsOpen(true)}>모달 열기</button>
+          <button onClick={() => setModalIsOpen(true)}>해수면 높이</button>
           <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
             API 내용 담을 모달
-            <button onClick={() => setModalIsOpen(false)}>모달 닫기 버튼</button>
+            <button onClick={() => setModalIsOpen(false)}>X</button>
           </Modal>
         </div>
         <div>
-          <h3 witdth="100%">해수면 온도</h3>
+          <button onClick={() => setModalIsOpen(true)}>해수면 온도</button>
+          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            API 내용 담을 모달
+            <button onClick={() => setModalIsOpen(false)}>X</button>
+          </Modal>
         </div>
         <div>
-          <h3 witdth="100%">미세먼지 현황</h3>
+          <button onClick={() => setModalIsOpen(true)}>미세먼지</button>
+          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            API 내용 담을 모달
+            <button onClick={() => setModalIsOpen(false)}>X</button>
+          </Modal>
         </div>
         <div>
-          <h3 witdth="100%">북극 빙하 너비</h3>
+          <button onClick={() => setModalIsOpen(true)}>북극 빙하 너비</button>
+          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            API 내용 담을 모달
+            <button onClick={() => setModalIsOpen(false)}>X</button>
+          </Modal>
         </div>
         <div>
-          <h3 witdth="100%">일산화탄소 수준</h3>
+          <button onClick={() => setModalIsOpen(true)}>대기중 일산화탄소 농도</button>
+          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            API 내용 담을 모달
+            <button onClick={() => setModalIsOpen(false)}>X</button>
+          </Modal>
         </div>
         <div>
-          <h3 witdth="100%">또 뭐가 있겠지</h3>
+          <button onClick={() => setModalIsOpen(true)}>뭔가 안좋은거</button>
+          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            API 내용 담을 모달
+            <button onClick={() => setModalIsOpen(false)}>X</button>
+          </Modal>
         </div>
         <div>
-          <h3 witdth="100%">API 폭탄</h3>
+          <button onClick={() => setModalIsOpen(true)}>북극곰 개체수</button>
+          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            API 내용 담을 모달
+            <button onClick={() => setModalIsOpen(false)}>X</button>
+          </Modal>
         </div>
       </StyledSlider>
     </div>
