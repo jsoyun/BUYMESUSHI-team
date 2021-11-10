@@ -33,6 +33,10 @@ function ApiPage({ sliders }) {
   margin: 0 auto;
 }
 
+/* .slick-arrow {
+  color: red;
+} */
+
 .slick-slide div {
   /* align-items: center; */
   text-align: center;
@@ -51,7 +55,7 @@ function ApiPage({ sliders }) {
 
 
   return (
-    <div style={{ padding: 25 }}>
+    <div>
       <h2>시간의 흐름에 따른 환경 지표의 변화</h2>
       <StyledSlider {...settings}>
         <div>
