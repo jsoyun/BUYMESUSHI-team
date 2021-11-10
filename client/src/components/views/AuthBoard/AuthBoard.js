@@ -37,8 +37,8 @@ const AuthBoard = (props) => {
         // var newPath = Photo.replace('C:\\fakepath\\', '');
         // console.log(newPath);
 
-        let form = document.getElementById('authBoardPhoto');
-        let formData = new FormData(form);
+        // let form = document.getElementById('authBoardPhoto');
+        // let formData = new FormData(form);
         let body = {
             body: Body,
             photo: Photo,
@@ -64,11 +64,7 @@ const AuthBoard = (props) => {
     return (
         <div>
             지키미인증 페이지asdf
-            <form
-                onSubmit={onSubmitHandler}
-                encType="multipart/form-data"
-                id="authBoardPhoto"
-            >
+            <form onSubmit={onSubmitHandler} encType="multipart/form-data">
                 본문 : <input value={Body} onChange={onBodyHandler} />
                 파일 업로드 :
                 <input

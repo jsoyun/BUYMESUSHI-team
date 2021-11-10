@@ -76,9 +76,9 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/post', upload.single('authBoardPhoto'), async (req, res) => {
+router.post('/post', upload.array('authBoardPhoto'), async (req, res) => {
     try {
-        console.log(req.file);
+        console.log(req.file, req.body);
 
         // const authBoard = new AuthBoard(req.body);
         // authBoard.save(async (err, userInfo) => {
