@@ -2,20 +2,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const NewsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-grow: row;
-  flex-wrap: nowrap;
-  float: left;
-`;
-
 const Item = styled.div`
+  display: flex;
   position: relative;
-  flex-grow: row;
-  flex-wrap: nowrap;
-  float: left;
-  justify-content: space-evenly;
   width: 350px;
   height: 420px;
   border: 2px solid red;
@@ -52,13 +41,11 @@ const Desc = styled.div`
 
 const NewsItem = ({ title, description, url, urlToImage }) => {
   return (
-    <NewsContainer>
-      <Item>
-        <NewsImg src={urlToImage} alt="NewImage" />
-        <Headline href={url}>{title}</Headline>
-        <Desc>{description}</Desc>
-      </Item>
-    </NewsContainer>
+    <Item>
+      <NewsImg src={urlToImage} alt="NewImage" />
+      <Headline href={url}>{title}</Headline>
+      <Desc>{description}</Desc>
+    </Item>
   );
 };
 

@@ -6,12 +6,17 @@ import Axios from "axios";
 import styled from "styled-components";
 // import "/styles/newsApi.css";
 
+const NewsHead = styled.h1`
+  /* align-content: center; */
+`;
+
 const Container = styled.div`
   width: 100%;
   display: flex;
   flex-grow: row;
   flex-wrap: nowrap;
   float: left;
+  border: 1px solid blue;
 `;
 
 const NewsApi = () => {
@@ -29,16 +34,20 @@ const NewsApi = () => {
   }, []);
 
   return (
-    <Container>
-      {articles.map(({ title, description, url, urlToImage }) => (
-        <NewsItem
-          title={title}
-          description={description}
-          url={url}
-          urlToImage={urlToImage}
-        />
-      ))}
-    </Container>
+    <>
+      <NewsHead>News and Features</NewsHead>
+      <hr />
+      <Container>
+        {articles.map(({ title, description, url, urlToImage }) => (
+          <NewsItem
+            title={title}
+            description={description}
+            url={url}
+            urlToImage={urlToImage}
+          />
+        ))}
+      </Container>
+    </>
   );
 };
 

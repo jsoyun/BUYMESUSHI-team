@@ -3,7 +3,7 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import SliderPage from "../SliderPage/SliderPage";
 import ApiPage from "../ApiPage/ApiPage";
-import NewsApi from "../SliderPage/NewsApi";
+import NewsApi from "../NewsPage/NewsApi";
 
 const LandingPage = (props) => {
   useEffect(() => {
