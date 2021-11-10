@@ -21,10 +21,10 @@ export default class SwipeToSlide extends Component {
         console.log(
           `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
         );
-      }
+      },
     };
     return (
-      <div style={{ padding: 25 }}>
+      <div>
         <h2>시간의 흐름에 따른 환경 지표의 변화</h2>
         <Slider {...settings}>
           <div>

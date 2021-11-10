@@ -3,7 +3,7 @@
 import NewsItem from "./NewsItem";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import "./newsApi.css";
+// import "/styles/newsApi.css";
 
 const NewsApi = () => {
   const [articles, setArticles] = useState([]);
@@ -20,7 +20,7 @@ const NewsApi = () => {
   }, []);
 
   return (
-    <div className="news-container">
+    <>
       {articles.map(({ title, description, url, urlToImage }) => (
         <NewsItem
           title={title}
@@ -29,7 +29,7 @@ const NewsApi = () => {
           urlToImage={urlToImage}
         />
       ))}
-    </div>
+    </>
   );
 };
 
