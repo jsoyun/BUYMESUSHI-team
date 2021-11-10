@@ -39,7 +39,16 @@ const LandingPage = (props) => {
             </div>
             <br /> */}
       <SliderPage />
+      <br />
+      <br />
+      <br />
       <ApiPage />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <NewsApi />
     </>
   );

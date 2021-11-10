@@ -20,7 +20,7 @@ const NewsApi = () => {
   }, []);
 
   return (
-    <div>
+    <div className="news-container">
       {articles.map(({ title, description, url, urlToImage }) => (
         <NewsItem
           title={title}
