@@ -1,22 +1,24 @@
-import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import NavBar from "./components/views/NavBar/NavBar";
-import LandingPage from './components/views/LandingPage/LandingPage';
-import LoginPage from './components/views/LoginPage/LoginPage';
-import RegisterPage from './components/views/RegisterPage/RegisterPage';
-import Auth from './hoc/auth';
-import NavBar from './components/views/NavBar/NavBar';
-import SignUp from './components/views/RegisterPage/Register';
-import About from './components/views/AboutPage/About';
+import LandingPage from "./components/views/LandingPage/LandingPage";
+import LoginPage from "./components/views/LoginPage/LoginPage";
+import RegisterPage from "./components/views/RegisterPage/RegisterPage";
+import Auth from "./hoc/auth";
+import NavBar from "./components/views/NavBar/NavBar";
+import About from "./components/views/AboutPage/About";
 
 //page
 
-import HomeScreen from './components/views/ShoppingPage/HomeScreen';
-import MyPage from './components/views/ShoppingPage/MyPage';
-import ProductScreen from './components/views/ShoppingPage/ProductScreen';
+import HomeScreen from "./components/views/ShoppingPage/HomeScreen";
+import MyPage from "./components/views/ShoppingPage/MyPage";
+import ProductScreen from "./components/views/ShoppingPage/ProductScreen";
 //쇼핑목록 안 components
-import AuthBoard from './components/views/AuthBoard/AuthBoard';
-import { HomeWorkSharp } from '@material-ui/icons';
+import AuthBoard from "./components/views/AuthBoard/AuthBoard";
+import { HomeWorkSharp } from "@material-ui/icons";
+// 추후 삭제
+import SignUp from "./components/views/RegisterPage/Register";
+import UploadForm from "./components/views/AuthBoard/UploadImage/UploadForm";
 
 function App() {
     return (
@@ -65,6 +67,7 @@ function App() {
 
                     {/* 추후 삭제 */}
                     <Route exact path="/signup" component={SignUp} />
+                    <Route exact path="/upload" component={UploadForm} />
                 </Switch>
             </div>
         </Router>
