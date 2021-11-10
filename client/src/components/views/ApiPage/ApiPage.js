@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-modal";
 import Slider from "react-slick";
 import styled from 'styled-components';
 import "slick-carousel/slick/slick.css";
@@ -52,14 +53,18 @@ function ApiPage({ sliders }) {
   /* overflow-x: hidden; */
 }
 `;
-
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <div>
       <h2>시간의 흐름에 따른 환경 지표의 변화</h2>
       <StyledSlider {...settings}>
         <div>
-          <h3 witdth="100%">해수면 높이</h3>
+          <button onClick={() => setModalIsOpen(true)}>모달 열기</button>
+          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            역시 모달은 라이브러리지
+            <button onClick={() => setModalIsOpen(false)}>모달 닫기 버튼</button>
+          </Modal>
         </div>
         <div>
           <h3 witdth="100%">해수면 온도</h3>
