@@ -1,11 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
-import styled from 'styled-components';
+import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function ApiPage({ sliders }) {
-
   const settings = {
     className: "center",
     // 마지막꺼 다음에 첫번째꺼 오게 해서 무한 슬라이드 가능
@@ -23,39 +22,38 @@ function ApiPage({ sliders }) {
       console.log(
         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
       );
-    }
+    },
   };
 
   // 슬라이드 CSS 커스텀
   const StyledSlider = styled(Slider)`
-.slick-list {
-  width: 1600px;
-  margin: 0 auto;
-}
+    .slick-list {
+      width: 1600px;
+      margin: 0 auto;
+    }
 
-/* .slick-arrow {
+    /* .slick-arrow {
   color: red;
 } */
 
-.slick-slide div {
-  /* align-items: center; */
-  text-align: center;
-  /* border: 2px #5c75bb; */
-}
+    .slick-slide div {
+      /* align-items: center; */
+      text-align: center;
+      /* border: 2px #5c75bb; */
+    }
 
-.slick-dots {
-  bottom: -50px;
-  margin-top: 200px;
-}
+    .slick-dots {
+      bottom: -50px;
+      margin-top: 200px;
+    }
 
-.slick-track {
-  /* overflow-x: hidden; */
-}
-`;
-
+    .slick-track {
+      /* overflow-x: hidden; */
+    }
+  `;
 
   return (
-    <div>
+    <div style={{ padding: "25px" }}>
       <h2>시간의 흐름에 따른 환경 지표의 변화</h2>
       <StyledSlider {...settings}>
         <div>
