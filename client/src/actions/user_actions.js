@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, LOGIN_USER, POST_AUTHBOARD, REGISTER_USER } from './types';
+import { AUTH_USER, LOGIN_USER, REGISTER_USER } from './types';
 
 export function loginUser(dataTosubmit) {
     const request = axios
@@ -27,16 +27,6 @@ export function auth() {
         .then((response) => response.data);
     return {
         type: AUTH_USER,
-        payload: request,
-    };
-}
-
-export function postAuthBoard(dataTosubmit) {
-    const request = axios
-        .post('/api/authboard/post', dataTosubmit)
-        .then((response) => response.data);
-    return {
-        type: POST_AUTHBOARD,
         payload: request,
     };
 }

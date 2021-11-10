@@ -26,6 +26,10 @@ const authBoardschema = new mongoose.Schema({
     },
 });
 
+authBoardschema.pre('save', function (next) {
+    const authBoard = this;
+});
+
 const AuthBoard = mongoose.model('AuthBoard', authBoardschema);
 
 module.exports = AuthBoard;
