@@ -58,7 +58,7 @@ function ApiPage({ sliders }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
-    <div style={{ padding: "25px" }}>
+    <div style={{ padding: "0 25px" }}>
       <h2>시간의 흐름에 따른 환경 지표의 변화</h2>
       <StyledSlider {...settings}>
         <div>
