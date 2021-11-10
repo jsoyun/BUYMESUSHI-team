@@ -14,15 +14,15 @@ const LandingPage = (props) => {
   // main 두번째 페이지도 헤더와 두개의 컴포넌트로 구성(추후 회의)
   // axios로 api 불러와놓고
 
-  // const onClickHandler = () => {
-  //     axios.get('/api/users/logout').then((response) => {
-  //         if (response.data.success) {
-  //             props.history.push('/login');
-  //         } else {
-  //             alert('로그아웃 하는데 실패 했습니다.');
-  //         }
-  //     });
-  // };
+  const onClickHandler = () => {
+    axios.get("/api/users/logout").then((response) => {
+      if (response.data.success) {
+        props.history.push("/login");
+      } else {
+        alert("로그아웃 하는데 실패 했습니다.");
+      }
+    });
+  };
 
   return (
     <>
