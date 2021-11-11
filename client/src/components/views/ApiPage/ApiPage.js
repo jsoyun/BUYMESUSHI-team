@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-modal";
 import Slider from "react-slick";
 import styled from "styled-components";
@@ -34,10 +34,6 @@ function ApiPage({ sliders }) {
       width: 1600px;
       margin: 0 auto;
     }
-
-    /* .slick-arrow {
-  color: red;
-} */
 
     .slick-slide div {
       /* align-items: center; */
