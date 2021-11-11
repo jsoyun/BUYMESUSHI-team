@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-const Post = () => {
+const AuthBoardPost = () => {
     const [Body, setBody] = useState("");
     const [Like, setLike] = useState(null);
     const [Comment, setComment] = useState("");
@@ -108,4 +108,4 @@ const Post = () => {
     );
 };
 
-export default withRouter(Post);
+export default withRouter(AuthBoardPost);

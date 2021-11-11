@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postAuthBoard } from "../../../actions/authBoard_actions";
-import Post from "./Sections/Post";
+import AuthBoardPost from "./Sections/AuthBoardPost";
+import AuthBoardFeed from "./Sections/AuthBoardFeed";
 
 const AuthBoard = (props) => {
     const dispatch = useDispatch();
@@ -29,7 +30,12 @@ const AuthBoard = (props) => {
             .catch((err) => console.error(err));
     }, []);
 
-    return <Post />;
+    return (
+        <React.Fragment>
+            <AuthBoardPost />
+            <AuthBoardFeed />
+        </React.Fragment>
+    );
 };
 
 export default withRouter(AuthBoard);
