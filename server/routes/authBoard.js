@@ -99,7 +99,17 @@ router.get("/", async (req, res) => {
 
 router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
     try {
+        // 아래 : Object: null prototype 삭제
+        // const obj = JSON.parse(JSON.stringify(req.body));
+        // console.log(obj);
+        const authBoardBody = req.body.authBody;
         console.log(req.file, req.body);
+        console.log(authBoardBody);
+
+        const insertMongo = {
+            authBody: authBoardBody,
+            photo: `${req.file.destination}/${req.file.filename}`,
+        };
 
         // const authBoard = new AuthBoard(req.body);
         // authBoard.save(async (err, userInfo) => {
@@ -107,7 +117,7 @@ router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
         //     return res.status(200).json({ postAuthBoard: true });
         // });
         // console.log(authBoard);
-        AuthBoard.insertMany(req.body)
+        AuthBoard.insertMany(insertMongo)
             .then(() => {
                 return res.status(200).json({ postAuthBoard: true });
             })

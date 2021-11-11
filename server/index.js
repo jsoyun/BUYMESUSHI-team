@@ -61,8 +61,9 @@ const upload = multer({
     fileFilter,
 });
 app.post("/upload", upload.single("uploadedFile"), (req, res) => {
-    console.log(req.file);
-    console.log(req.body);
+    const authBoardBody = req.body.authBody;
+    console.log(req.file, authBoardBody);
+    console.log(authBoardBody);
     res.json(req.file).status(200);
 });
 //////////////////////
