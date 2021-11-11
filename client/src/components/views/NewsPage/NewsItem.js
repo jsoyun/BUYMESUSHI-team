@@ -1,20 +1,25 @@
 // 뉴스 기사 맵핑
 import React from "react";
 import styled from "styled-components";
+// import { CarouselWrapper } from "react-pretty-carousel";
 
 const Item = styled.div`
-  display: flex;
   position: relative;
-  width: 350px;
+  width: 355px;
   height: 420px;
   border: 2px solid red;
   background-color: black;
+  display: flex;
+  position: relative;
+  flex-wrap: nowrap;
+  float: left;
 `;
 
 const NewsImg = styled.img`
-  width: 350px;
+  width: 355px;
   height: 200px;
   position: absolute;
+  background-position: center;
 `;
 
 const Headline = styled.a`
@@ -30,8 +35,8 @@ const Headline = styled.a`
 
 const Desc = styled.div`
   position: absolute;
-  /* width: 330px;
-    height: 30px; */
+  width: 330px;
+  height: 30px;
   color: white;
   margin-top: 295px;
   margin-left: 10px;
