@@ -4,8 +4,8 @@ import leftArrow from "./icons/left-arrow.svg";
 import rightArrow from "./icons/right-arrow.svg";
 import styled from "styled-components";
 
-const Button = styled.h1`
-  width: 60px;
+const Button = styled.button`
+  /* width: 60px;
   height: 60px;
   border-radius: 50%;
   background: #f1f1f1;
@@ -14,7 +14,7 @@ const Button = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: pointer; */
 `;
 
 export default function BtnSlider({ direction, moveSlide }) {
