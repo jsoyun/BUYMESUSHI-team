@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Slider from "react-slick";
 import styled from 'styled-components';
+import ApiPageModal from './ApiPageModal';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -61,12 +62,9 @@ function ApiPage({ sliders }) {
     <div style={{ padding: "0 25px" }}>
       <h2>시간의 흐름에 따른 환경 지표의 변화</h2>
       <StyledSlider {...settings}>
+        {/* ApiPageModal이라는 컴포넌트를 가져왔는데 이건 map 함수 써서 반복되게 해야 하나... */}
         <div>
-          <button onClick={() => setModalIsOpen(true)}>해수면 높이</button>
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-            API 내용 담을 모달
-            <button onClick={() => setModalIsOpen(false)}>X</button>
-          </Modal>
+          <ApiPageModal />
         </div>
         <div>
           <button onClick={() => setModalIsOpen(true)}>해수면 온도</button>
@@ -114,5 +112,7 @@ function ApiPage({ sliders }) {
     </div>
   );
 }
+Modal.setAppElement("#root");
+
 
 export default ApiPage;
