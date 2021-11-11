@@ -42,8 +42,8 @@ const AuthBoardPost = () => {
             .post("http://localhost:5000/api/authBoard/post", formData)
             .then((response) => {
                 console.log(response.data);
+                console.log("포스트 완료");
             });
-        console.log("포스트 완료");
 
         // let body = {
         //     body: Body,
