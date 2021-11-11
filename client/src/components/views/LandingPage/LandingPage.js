@@ -3,7 +3,7 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import SliderPage from "../SliderPage/SliderPage";
 import ApiPage from "../ApiPage/ApiPage.js";
-import News from "../NewsPage/News";
+import NewsApi from "../NewsPage/NewsApi";
 
 const LandingPage = (props) => {
   // paging은 App.js에서 라우팅하는 방식으로 해결.
@@ -16,7 +16,7 @@ const LandingPage = (props) => {
       <SliderPage />
       <ApiPage />
       <br />
-      <News />
+      <NewsApi />
     </div>
   );
 };

@@ -5,7 +5,8 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Slider from "react-slick";
 import styled from "styled-components";
-// import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const NewsHead = styled.h1``;
 
@@ -22,8 +23,11 @@ function NewsApi({ sliders }) {
     swipeToSlide: true,
     arrow: true,
     // centerMode: true,
-    speed: 200,
     dots: true,
+    speed: 200,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    cssEase: "linear",
 
     afterChange: function (index) {
       console.log(
