@@ -18,10 +18,9 @@ export default function WeatherApiModal() {
 
   return (
     <>
-      <button onClick={() => setModalIsOpen(true)}>전세계 도시별 날씨</button>
+      <button onClick={() => setModalIsOpen(true)}>해수면 높이</button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <Container>{/* 여기에는 쓰고 싶은 데이터 넣기*/}</Container>
-        API 내용 담기
         <button onClick={() => setModalIsOpen(false)}>X 모달 닫기 X</button>
       </Modal>
     </>

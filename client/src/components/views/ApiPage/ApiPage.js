@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import Slider from "react-slick";
-import styled from 'styled-components';
-import WeatherApiModal from './WeatherApiModal';
+import styled from "styled-components";
+import WeatherApiModal from "./WeatherApiModal";
+import SeaLevelApiModal from "./SeaLevelApiModal";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function ApiPage({ sliders }) {
-
   const settings = {
     className: "center",
     // 마지막꺼 다음에 첫번째꺼 오게 해서 무한 슬라이드 가능
@@ -25,49 +25,46 @@ function ApiPage({ sliders }) {
       console.log(
         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
       );
-    }
+    },
   };
 
   // 슬라이드 CSS 커스텀
   const StyledSlider = styled(Slider)`
-.slick-list {
-  width: 1600px;
-  margin: 0 auto;
-}
+    .slick-list {
+      width: 1600px;
+      margin: 0 auto;
+    }
 
-/* .slick-arrow {
+    /* .slick-arrow {
   color: red;
 } */
 
-.slick-slide div {
-  /* align-items: center; */
-  text-align: center;
-  /* border: 2px #5c75bb; */
-}
+    .slick-slide div {
+      /* align-items: center; */
+      text-align: center;
+      /* border: 2px #5c75bb; */
+    }
 
-.slick-dots {
-  bottom: -50px;
-  margin-top: 200px;
-}
+    .slick-dots {
+      bottom: -50px;
+      margin-top: 200px;
+    }
 
-.slick-track {
-  /* overflow-x: hidden; */
-}
-`;
-
-  // 열린 모달은 모달바깥쪽을 클릭하거나 닫기버튼을 클릭하거나 ESC키를 클릭해서 닫는다.
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+    .slick-track {
+      /* overflow-x: hidden; */
+    }
+  `;
 
   return (
     <div style={{ padding: "0 25px" }}>
-      <h2>시간의 흐름에 따른 환경 지표의 변화</h2>
+      <h2>환경 지표의 변화</h2>
       <StyledSlider {...settings}>
         {/* ApiPageModal이라는 컴포넌트를 가져왔는데 이건 map 함수 써서 반복되게 해야 하나... */}
         <div>
           <WeatherApiModal />
         </div>
         <div>
-          <WeatherApiModal />
+          <SeaLevelApiModal />
         </div>
         <div>
           <WeatherApiModal />
@@ -77,6 +74,5 @@ function ApiPage({ sliders }) {
   );
 }
 Modal.setAppElement("#root");
-
 
 export default ApiPage;
