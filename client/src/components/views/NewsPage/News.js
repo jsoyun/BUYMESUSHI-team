@@ -9,7 +9,7 @@ function News({ sliders }) {
   const settings = {
     className: "center",
     // 마지막꺼 다음에 첫번째꺼 오게 해서 무한 슬라이드 가능
-    infinite: true,
+    infinite: false,
     // 슬라이드 끝이 안 짤릴 수 있게
     centerPadding: "0px",
     // 한번에 보여줄 개수
@@ -18,6 +18,7 @@ function News({ sliders }) {
     swipeToSlide: true,
     arrow: true,
     // centerMode: true,
+    autoplaySpeed: 2000,
 
     afterChange: function (index) {
       console.log(
@@ -29,8 +30,7 @@ function News({ sliders }) {
   const StyledSlider = styled(Slider)``;
 
   return (
-    <div style={{ padding: "0 25px" }}>
-      <h2>News</h2>
+    <div>
       {/* map 함수 */}
       <StyledSlider {...settings}>
         {/* ApiPageModal이라는 컴포넌트를 가져왔는데 이건 map 함수 써서 반복되게 해야 하나... */}
