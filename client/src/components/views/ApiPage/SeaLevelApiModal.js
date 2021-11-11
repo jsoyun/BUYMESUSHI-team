@@ -13,7 +13,7 @@ const Container = styled.div`
   border: 1px solid blue;
 `;
 
-export default function WeatherApiModal() {
+export default function SeaLevelApiModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
