@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Slider from "react-slick";
 import styled from 'styled-components';
-import ApiPageModal from './ApiPageModal';
+import WeatherApiModal from './WeatherApiModal';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -15,7 +15,7 @@ function ApiPage({ sliders }) {
     // 슬라이드 끝이 안 짤릴 수 있게
     centerPadding: "0px",
     // 한번에 보여줄 개수
-    slidesToShow: 3,
+    slidesToShow: 2,
     // 드래그해서 슬라이드 가능
     swipeToSlide: true,
     arrow: true,
@@ -64,49 +64,13 @@ function ApiPage({ sliders }) {
       <StyledSlider {...settings}>
         {/* ApiPageModal이라는 컴포넌트를 가져왔는데 이건 map 함수 써서 반복되게 해야 하나... */}
         <div>
-          <ApiPageModal />
+          <WeatherApiModal />
         </div>
         <div>
-          <button onClick={() => setModalIsOpen(true)}>해수면 온도</button>
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-            API 내용 담을 모달
-            <button onClick={() => setModalIsOpen(false)}>X</button>
-          </Modal>
+          <WeatherApiModal />
         </div>
         <div>
-          <button onClick={() => setModalIsOpen(true)}>미세먼지</button>
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-            API 내용 담을 모달
-            <button onClick={() => setModalIsOpen(false)}>X</button>
-          </Modal>
-        </div>
-        <div>
-          <button onClick={() => setModalIsOpen(true)}>북극 빙하 너비</button>
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-            API 내용 담을 모달
-            <button onClick={() => setModalIsOpen(false)}>X</button>
-          </Modal>
-        </div>
-        <div>
-          <button onClick={() => setModalIsOpen(true)}>대기중 일산화탄소 농도</button>
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-            API 내용 담을 모달
-            <button onClick={() => setModalIsOpen(false)}>X</button>
-          </Modal>
-        </div>
-        <div>
-          <button onClick={() => setModalIsOpen(true)}>뭔가 안좋은거</button>
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-            API 내용 담을 모달
-            <button onClick={() => setModalIsOpen(false)}>X</button>
-          </Modal>
-        </div>
-        <div>
-          <button onClick={() => setModalIsOpen(true)}>북극곰 개체수</button>
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-            API 내용 담을 모달
-            <button onClick={() => setModalIsOpen(false)}>X</button>
-          </Modal>
+          <WeatherApiModal />
         </div>
       </StyledSlider>
     </div>

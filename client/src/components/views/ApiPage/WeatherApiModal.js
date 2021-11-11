@@ -14,10 +14,9 @@ const Container = styled.div`
   border: 1px solid blue;
 `;
 
-export default function ApiPageModal() {
+export default function WeatherApiModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [finedust, setFineDust] = useState([]);
-
 
   useEffect(() => {
     const getFineDust = async () => {
