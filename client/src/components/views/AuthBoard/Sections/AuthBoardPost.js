@@ -28,7 +28,7 @@ const AuthBoardPost = () => {
     };
 
     const onSubmitHandler = (event) => {
-        //event.preventDefault();
+        event.preventDefault();
         // var newPath = Photo.replace('C:\\fakepath\\', '');
         // console.log(newPath);
 

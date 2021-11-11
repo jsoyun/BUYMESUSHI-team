@@ -36,38 +36,6 @@ const connectAndImport = async () => {
 
 connectAndImport();
 
-//////////////////////
-
-const storageEngine = multer.diskStorage({
-    destination: "client/public/img/authBoard",
-    filename: function (req, file, callback) {
-        callback(
-            null,
-            file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-        );
-    },
-});
-const fileFilter = (req, file, callback) => {
-    let pattern = /jpg|png|svg/; // reqex
-
-    if (pattern.test(path.extname(file.originalname))) {
-        callback(null, true);
-    } else {
-        callback("Error: not a valid file");
-    }
-};
-const upload = multer({
-    storage: storageEngine,
-    fileFilter,
-});
-app.post("/upload", upload.single("uploadedFile"), (req, res) => {
-    const authBoardBody = req.body.authBody;
-    console.log(req.file, authBoardBody);
-    console.log(authBoardBody);
-    res.json(req.file).status(200);
-});
-//////////////////////
-
 app.get("/api/shop", (req, res) => {
     //쇼핑페이지로 넘어가는거 해야함..
     res.json("shopppp");

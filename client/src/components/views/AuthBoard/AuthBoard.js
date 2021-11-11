@@ -21,14 +21,14 @@ const AuthBoard = (props) => {
     //     }
     // });
 
-    useEffect(() => {
-        axios
-            .get("/api/authboard")
-            .then((response) => {
-                //console.log(response.data);
-            })
-            .catch((err) => console.error(err));
-    }, []);
+    // useEffect(() => {
+    //     axios
+    //         .get("/api/authboard")
+    //         .then((response) => {
+    //             //console.log(response.data);
+    //         })
+    //         .catch((err) => console.error(err));
+    // }, []);
 
     return (
         <React.Fragment>
