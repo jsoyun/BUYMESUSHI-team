@@ -43,6 +43,7 @@ const AuthBoardPost = () => {
             .then((response) => {
                 console.log(response.data);
             });
+        console.log("포스트 완료");
 
         // let body = {
         //     body: Body,
