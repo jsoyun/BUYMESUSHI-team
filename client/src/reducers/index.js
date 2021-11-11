@@ -5,13 +5,19 @@ import { combineReducers } from "redux";
 import user from "./user_reducer";
 import authBoard from "./authBoard_reducer";
 import cartReducer from "./cartReducer";
+import {
+  getProductDetailsReducer,
+  getProductsReducer,
+} from "./productReducers";
 // import productShop from
 
 const rootReducer = combineReducers({
   user,
   authBoard,
 
-  cartReducer,
+  cart: cartReducer,
+  getProducts: getProductsReducer,
+  getProductDetails: getProductDetailsReducer,
 });
 
 export default rootReducer;
