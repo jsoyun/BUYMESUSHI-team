@@ -8,6 +8,11 @@ const path = require("path");
 const { auth } = require("../middleware/auth");
 const router = express.Router();
 
+router.use((req, res, next) => {
+    res.locals.user = req.user;
+    next();
+});
+
 const storageEngine = multer.diskStorage({
     destination: "client/public/img/authBoard",
     filename: function (req, file, callback) {
@@ -31,8 +36,11 @@ const upload = multer({
     fileFilter,
 });
 
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
     try {
+        console.log(req.user);
+        const user = res.locals.user;
+        //console.log(user);
         const authBoards = await AuthBoard.find({});
 
         res.json({ authBoards });
@@ -46,13 +54,17 @@ router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
         // 아래 : Object: null prototype 삭제
         // const obj = JSON.parse(JSON.stringify(req.body));
         // console.log(obj);
+        // const user = res.locals.user;
         const authBoardBody = req.body.authBody;
         console.log(req.file, req.body);
         console.log(authBoardBody);
 
+        // console.log(user);
+
         const insertMongo = {
             authBody: authBoardBody,
             photo: `${req.file.destination}/${req.file.filename}`,
+            // postedBy: req.user._id,
         };
 
         AuthBoard.insertMany(insertMongo)

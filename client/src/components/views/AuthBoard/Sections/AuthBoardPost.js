@@ -28,7 +28,7 @@ const AuthBoardPost = () => {
     };
 
     const onSubmitHandler = (event) => {
-        //event.preventDefault();
+        event.preventDefault();
         // var newPath = Photo.replace('C:\\fakepath\\', '');
         // console.log(newPath);
 
@@ -43,6 +43,7 @@ const AuthBoardPost = () => {
             .then((response) => {
                 console.log(response.data);
             });
+        console.log("포스트 완료");
 
         // let body = {
         //     body: Body,

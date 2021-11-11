@@ -33,7 +33,7 @@ function App() {
           <Route exact path="/about" component={Auth(About, null)} />
 
           {/* usEarth 페이지 추후 null -> true로 변경 */}
-          <Route exact path="/authboard" component={Auth(AuthBoard, null)} />
+          <Route exact path="/authboard" component={Auth(AuthBoard, true)} />
           {/* <Route exact path="/shop" component={Auth(About, null)} /> */}
           <Route exact path="/products" component={Auth(HomeScreen, null)} />
           <Route
