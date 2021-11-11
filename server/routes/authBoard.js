@@ -1,70 +1,85 @@
 const express = require("express");
-const { AuthBoard } = require("../models/AuthBoard");
-const { User } = require("../models/User");
+const AuthBoard = require("../models/AuthBoard");
+const User = require("../models/User");
+
+const multer = require("multer");
+const path = require("path");
+
 const { auth } = require("../middleware/auth");
 const router = express.Router();
-
-const faker = require("faker");
-const MongoClient = require("mongodb").MongoClient;
-
-function randomIntFromInterval(min, max) {
-    // min and max included
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-async function seedDB() {
-    // Connection URL
-    const uri =
-        "mongodb+srv://chs:chlgustjr1!@boilerplate.z1w0n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
-    const client = new MongoClient(uri, {
-        useNewUrlParser: true,
-        // useUnifiedTopology: true,
-    });
-
-    try {
-        await client.connect();
-        console.log("Connected correctly to server");
-
-        const collection = client
-            .db("myFirstDatabase")
-            .collection("authboards");
-
-        // The drop() command destroys all data from a collection.
-        // Make sure you run it against proper database and collection.
-        collection.drop();
-
-        // make a bunch of time series data
-
-        var randomCard = faker.helpers.createCard();
-        let authBoardSeedData = [
-            {
-                body: randomCard,
-                photo: "../../client/public/img/authBoard/abc.jpg",
-                createdAt: Date.now(),
-            },
-            { body: "234", photo: "345" },
-            { body: "345", photo: "456" },
-        ];
-
-        collection.insertMany(authBoardSeedData);
-
-        console.log("Database seeded! :)");
-    } catch (err) {
-        console.log(err.stack);
-    }
-}
-
-seedDB();
-
-router.get("/", auth, (req, res) => {
-    AuthBoard.find()
-        .then()
-        .catch((err) => console.error(err));
-    res.send("hi1");
+router.use(auth);
+router.use((req, res, next) => {
+    res.locals.user = req.user;
+    next();
 });
 
-router.get("/:id", auth, (req, res) => {
+const storageEngine = multer.diskStorage({
+    destination: "client/public/img/authBoard",
+    filename: function (req, file, callback) {
+        callback(
+            null,
+            file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+        );
+    },
+});
+const fileFilter = (req, file, callback) => {
+    let pattern = /jpg|png|svg/; // reqex
+
+    if (pattern.test(path.extname(file.originalname))) {
+        callback(null, true);
+    } else {
+        callback("Error: not a valid file");
+    }
+};
+const upload = multer({
+    storage: storageEngine,
+    fileFilter,
+});
+
+router.get("/", async (req, res) => {
+    try {
+        // const user = res.locals.user;
+        // console.log(user);
+
+        //console.log(user);
+        const authBoards = await AuthBoard.find({});
+
+        res.json({ authBoards });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.post("/post", upload.single("authBoardPhoto"), async (req, res) => {
+    try {
+        // 아래 : Object: null prototype 삭제
+        // const obj = JSON.parse(JSON.stringify(req.body));
+        // console.log(obj);
+        const user = res.locals.user;
+        const authBoardBody = req.body.authBody;
+        console.log(user);
+        // console.log(req.file, req.body);
+        // console.log(authBoardBody);
+
+        const insertMongo = {
+            authBody: authBoardBody,
+            photo: `${req.file.destination}/${req.file.filename}`,
+            // postedBy: req.user._id,
+        };
+
+        AuthBoard.insertMany(insertMongo)
+            .then(() => {
+                return res.status(200).json({ postAuthBoard: true });
+            })
+            .catch((err) => {
+                return res.json({ postAuthBoard: false });
+            });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.get("/:id", (req, res) => {
     res.send("hi2");
 });
 

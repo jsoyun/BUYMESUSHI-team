@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 const authBoardschema = new mongoose.Schema({
-    body: {
+    authBody: {
         type: String,
         required: true,
     },
     photo: {
         type: String,
-        required: true,
+        //required: true,
     },
     likes: [{ type: ObjectId, ref: "User" }],
     comments: [
         {
-            text: String,
+            text: { type: String },
             postedBy: { type: ObjectId, ref: "User" },
         },
     ],
@@ -26,6 +26,10 @@ const authBoardschema = new mongoose.Schema({
     },
 });
 
+authBoardschema.pre("save", function (next) {
+    const authBoard = this;
+});
+
 const AuthBoard = mongoose.model("AuthBoard", authBoardschema);
 
-module.exports = { AuthBoard };
+module.exports = AuthBoard;

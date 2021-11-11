@@ -1,4 +1,4 @@
-const { User } = require("../models/User");
+const User = require("../models/User");
 
 let auth = (req, res, next) => {
     // 인증 처리 하는 곳
@@ -14,6 +14,7 @@ let auth = (req, res, next) => {
         req.user = user;
         next();
     });
+
     // 3. 유저를 찾는다.
     // 4. 유저가 있으면 인증O
     // 5. 유저가 없으면 인증 X
