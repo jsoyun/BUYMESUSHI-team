@@ -2,10 +2,23 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { postAuthBoard } from "../../../actions/authBoard_actions";
 import Post from "./Sections/Post";
 
 const AuthBoard = (props) => {
     const dispatch = useDispatch();
+    // dispatch(postAuthBoard()).then((response) => {
+    //     if (response.payload.postAuthBoard) {
+    //         if (response.payload.postAuthBoard) {
+    //             props.history.push("/authboard");
+    //         } else {
+    //             console.log("post fail!!!");
+    //             alert("post fail!!! check description and picture!");
+    //         }
+    //     } else {
+    //         console.error("error");
+    //     }
+    // });
 
     useEffect(() => {
         axios
